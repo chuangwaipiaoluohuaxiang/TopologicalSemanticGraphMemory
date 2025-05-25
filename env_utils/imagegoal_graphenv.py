@@ -70,7 +70,7 @@ class ImageGoalGraphEnv(ImageGoalEnv):
             'obj_memory_A_OV': Box(low=0, high=1, shape=(self.objgraph.M, self.objgraph.MV), dtype=np.bool),
             'obj_memory_time': Box(low=-np.Inf, high=np.Inf, shape=(self.objgraph.M,), dtype=np.float32)
         })
-
+#wyh。 加载了预训练模型Img_encoder.pth.tar
     def load_img_encoder(self, feature_dim):
         img_encoder = resnet18_img(num_classes=feature_dim)
         dim_mlp = img_encoder.fc.weight.shape[1]
@@ -81,7 +81,7 @@ class ImageGoalGraphEnv(ImageGoalEnv):
         img_encoder.load_state_dict(state_dict)
         img_encoder.eval().to(self.torch_device)
         return img_encoder
-
+#wyh。记载了预训练模型Obj_encoder.pth.tar
     def load_obj_encoder(self, feature_dim):
         obj_encoder = resnet18_obj(num_classes=feature_dim)
         dim_mlp = obj_encoder.fc.weight.shape[1]
