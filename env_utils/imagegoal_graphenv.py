@@ -7,10 +7,10 @@ from gym.spaces.box import Box
 import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
-from env_utils.imagegoal_env import ImageGoalEnv
-from torchvision.models import resnet18 as resnet18_img
-from model.Graph.resnet_obj import resnet18 as resnet18_obj
-from model.Graph.graph import ImgGraph, ObjGraph
+from env_utils.imagegoal_env import ImageGoalEnv。         #父类，用于继承
+from torchvision.models import resnet18 as resnet18_img      #PyTorch 官方实现的标准 ResNet-18 网络结构
+from model.Graph.resnet_obj import resnet18 as resnet18_obj    #基于官方ResNet代码进行裁剪和定制，主要针对ROI特征提取任务（如目标检测、实例分割等），要使用这个而非官方代码
+from model.Graph.graph import ImgGraph, ObjGraph     #ImgGraph：空间观测/帧为节点，管理空间关系，适合空间建图与定位；ObjGraph：物体实例为节点，管理物体属性及与观测帧的关系，适合物体跟踪与语义建图
 from model.Graph.graph_update import update_image_graph, update_object_graph
 project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
